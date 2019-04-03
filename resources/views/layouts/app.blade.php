@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
 </head>
-<body class="bg-grey-lighter font-sans antialiased text-black leading-tight">
+<body class="bg-grey-lighter font-sans antialiased text-black leading-tight pb-6">
 <div id="app">
     @include('includes.header')
     <div class="container mx-auto bg-transparent -mt-32">
