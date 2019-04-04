@@ -12,7 +12,7 @@
 <body class="bg-grey-lighter font-sans antialiased text-black leading-tight">
 <div id="app">
     @include('includes.header')
-    <div class="container mx-auto bg-transparent -mt-32">
+    <div class="container mx-auto bg-transparent @yield('container-class', '')">
         @include('includes.navbar')
         <div class="bg-grey-lighter w-full text-2xl text-grey-darkest leading-normal rounded-t">
             @yield('body')
