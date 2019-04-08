@@ -21,6 +21,18 @@ $factory->define(User::class, function (Faker $faker) {
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+        'image' => '/users/avatar.jpg',
         'remember_token' => Str::random(10),
+    ];
+});
+
+
+$factory->define(\App\Post::class, function (Faker $faker) {
+    return [
+        'title' => $faker->sentence(8),
+        'subtitle' => 'Getting Started',
+        'body' => $faker->paragraph,
+        'reading_time' => $faker->numberBetween(1, 20),
+        'image' => '/images/posts/post.jpg',
     ];
 });

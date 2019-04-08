@@ -1,17 +1,21 @@
-let mix = require('laravel-mix')
-require('laravel-mix-purgecss')
+let mix = require('laravel-mix');
+require('laravel-mix-purgecss');
 
 mix.js('resources/js/app.js', 'public/js')
-  .postCss('resources/css/app.css', 'public/css')
-  .options({
-    postCss: [
-      require('postcss-import')(),
-      require('tailwindcss')('./tailwind.js'),
-      require('postcss-nesting')(),
-    ]
-  })
-  .purgeCss()
+    .postCss('resources/css/app.css', 'public/css')
+    .options({
+        postCss: [
+            require('postcss-import')(),
+            require('tailwindcss')('./tailwind.js'),
+            require('postcss-nesting')(),
+        ]
+    })
+    .purgeCss();
 
 if (mix.inProduction()) {
-  mix.version()
+    mix.version();
 }
+
+mix.browserSync({
+    proxy: 'http://127.0.0.1:8000'
+});

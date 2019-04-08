@@ -13,7 +13,7 @@
         </div>
 
         <div class="bg-cover w-full mx-auto rounded max-w-5xl mt-8"
-             style="background-image: url('https://www.tailwindtoolbox.com/templates/unsplash.jpg'); height: 32rem"></div>
+             style="background-image: url('https://source.unsplash.com/collection/325867/800x600'); height: 32rem"></div>
 
         <div class="flex justify-center mx-auto -mt-12 mb-12">
             <div class="w-5/6 bg-white py-12 px-10 shadow">
