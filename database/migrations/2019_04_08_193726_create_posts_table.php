@@ -20,6 +20,9 @@ class CreatePostsTable extends Migration
             $table->text('body');
             $table->unsignedInteger('reading_time');
             $table->string('image');
+
+            $table->unsignedInteger('user_id');
+
             $table->timestamps();
         });
     }
