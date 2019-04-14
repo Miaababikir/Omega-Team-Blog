@@ -10,11 +10,13 @@
         @guest
             <li class="mr-6"><a class="text-grey no-underline hover:text-white"
                                 href="{{ route('register') }}">Register</a></li>
+            <li class="mr-6"><a class="text-grey no-underline hover:text-white"
+                                href="{{ route('login') }}">Login</a></li>
         @endguest
 
         @auth
             <li class="mr-6"><a class="text-grey no-underline hover:text-white"
-                                href="{{ route('login') }}">Login</a></li>
+                                href="#">{{ auth()->user()->name }}</a></li>
         @endauth
     </ul>
 </div>
