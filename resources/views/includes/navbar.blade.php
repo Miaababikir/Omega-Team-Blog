@@ -7,7 +7,14 @@
     </ul>
 
     <ul class="list-reset flex">
-        <li class="mr-6"><a class="text-grey no-underline hover:text-blue-dark" href="#"><i class="fab fa-facebook-f"></i></a></li>
-        <li class="mr-6"><a class="text-grey no-underline hover:text-teal" href="#"><i class="fab fa-twitter"></i></a></li>
+        @guest
+            <li class="mr-6"><a class="text-grey no-underline hover:text-white"
+                                href="{{ route('register') }}">Register</a></li>
+        @endguest
+
+        @auth
+            <li class="mr-6"><a class="text-grey no-underline hover:text-white"
+                                href="{{ route('login') }}">Login</a></li>
+        @endauth
     </ul>
 </div>

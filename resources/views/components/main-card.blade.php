@@ -1,6 +1,6 @@
 <div class="flex w-full bg-white rounded shadow-lg mb-12">
     <div class="w-2/3">
-        <img class="w-full h-full" src="https://source.unsplash.com/collection/494263/800x600" alt="image">
+        <img class="w-full h-full" src="{{ asset('images/posts/post.jpg') }}" alt="image">
     </div>
 
     <div class="w-1/3 pt-6 flex flex-col flex-grow flex-shrink overflow-hidden shadow-lg">
