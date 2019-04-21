@@ -28,11 +28,16 @@ $factory->define(User::class, function (Faker $faker) {
 
 
 $factory->define(\App\Post::class, function (Faker $faker) {
+
+    $title = $faker->sentence(8);
+
     return [
-        'title' => $faker->sentence(8),
+        'title' => $title,
+        'slug' => str_slug($title),
         'subtitle' => 'Getting Started',
         'body' => $faker->paragraph,
         'reading_time' => $faker->numberBetween(1, 20),
         'image' => '/images/posts/post.jpg',
+        'user_id' => factory(User::class)->create(),
     ];
 });

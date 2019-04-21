@@ -2,7 +2,7 @@
     <ul class="list-reset flex">
         <li class="mr-6"><a class="text-white no-underline hover:text-white" href="#">Home</a></li>
         <li class="mr-6"><a class="text-grey no-underline hover:text-white" href="#">Posts</a></li>
-        <li class="mr-6"><a class="text-grey no-underline hover:text-white" href="#">Contact</a></li>
+        <li class="mr-6"><a class="text-grey no-underline hover:text-white" href="{{ route('posts.create') }}">New Post</a></li>
         <li class="mr-6"><a class="text-grey no-underline hover:text-white" href="#">About</a></li>
     </ul>
 
@@ -17,6 +17,8 @@
         @auth
             <li class="mr-6"><a class="text-grey no-underline hover:text-white"
                                 href="#">{{ auth()->user()->name }}</a></li>
+                <li class="mr-6"><a class="text-grey no-underline hover:text-white"
+                                    href="#">Logout</a></li>
         @endauth
     </ul>
 </div>

@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use App\User;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Foundation\Testing\TestResponse;
@@ -30,5 +31,12 @@ abstract class TestCase extends BaseTestCase
 
         });
 
+    }
+
+    protected function loginUser()
+    {
+        $user = factory(User::class)->create();
+
+        $this->actingAs($user);
     }
 }

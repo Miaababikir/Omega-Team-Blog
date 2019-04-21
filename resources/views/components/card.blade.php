@@ -4,7 +4,7 @@
         <img class="w-full h-64" src="{{ $post->image }}" alt="">
         <div class="p-3">
             <p class="text-grey text-sm uppercase">{{ $post->subtitle }}</p>
-            <a class="text-black font-semibold text-lg">{{ $post->title }}</a>
+            <a class="text-black no-underline font-semibold text-lg hover:text-teal" href="{{ route('posts.show', $post->slug) }}">{{ $post->title }}</a>
             <p class="ext-grey-darkest text-base font-serif">{{ $post->body }}</p>
         </div>
     </div>
