@@ -41,3 +41,13 @@ $factory->define(\App\Post::class, function (Faker $faker) {
         'user_id' => factory(User::class)->create(),
     ];
 });
+
+
+$factory->define(\App\Reply::class, function (Faker $faker) {
+
+    return [
+        'body' => $faker->paragraph,
+        'user_id' => factory(User::class)->create(),
+        'post_id' => factory(\App\Post::class)->create(),
+    ];
+});

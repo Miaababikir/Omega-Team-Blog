@@ -39,7 +39,8 @@
 
         @guest
             <div class="flex mx-auto px-10 mb-12 items-center justify-center">
-                <p class="text-xl text-grey-dark">Please <a class="text-teal no-underline" href="/login">Login</a> first to start contributing</p>
+                <p class="text-xl text-grey-dark">Please <a class="text-teal no-underline" href="/login">Login</a> first
+                    to start contributing</p>
             </div>
         @endguest
 
@@ -47,8 +48,9 @@
             <div class="flex mx-auto px-10 mb-12">
                 <div class="p-6">Add Comment</div>
                 <div class="flex-1">
-                    <form action="#">
-                        <textarea class="border border-solid border-grey-light shadow w-full mb-3" name="body" rows="4"
+                    <form action="{{ route('replies.store', $post->slug) }}" method="POST">
+                        @csrf
+                        <textarea class="border border-solid border-grey-light shadow w-full mb-3 py-4 px-4 text-lg" name="body" rows="4"
                                   required></textarea>
                         <button class="bg-green-light text-white py-2 px-8 rounded" type="submit">Reply</button>
                     </form>
@@ -56,19 +58,23 @@
             </div>
         @endauth
 
-        <div class="flex mx-auto px-10 mb-12">
-            <div class="flex justify-center px-4"><img class="w-16 h-16 rounded-full mr-4"
-                                                       src="{{ asset($post->user->image) }}" alt="avatar"></div>
-            <div class="flex-1 bg-white py-6 px-10 shadow">
-                <div class="flex justify-between items-center mb-6">
-                    <span class="text-xl font-semibold">Mosab Ibrahim</span>
-                    <span class="text-sm text-grey">08 FEBRUARY 2019</span>
+        @foreach($post->replies as $reply)
+
+            <div class="flex mx-auto px-10 mb-6">
+                <div class="flex justify-center px-4"><img class="w-16 h-16 rounded-full mr-4"
+                                                           src="{{ asset($reply->user->image) }}" alt="avatar"></div>
+                <div class="flex-1 bg-white py-6 px-10 shadow">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-xl font-semibold">{{ $reply->user->name }}</span>
+                        <span class="text-sm text-grey">{{ $reply->created_at }}</span>
+                    </div>
+                    <p class="text-lg">
+                        {{ $reply->body }}
+                    </p>
                 </div>
-                <p class="text-lg">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquam assumenda
-                    blanditiis commodi dolorem dolorum eius esse eum fuga illum inventore, minus nemo nesciunt omnis qui
-                    quia similique tempora unde.</p>
             </div>
-        </div>
+
+        @endforeach
 
     </div>
 
