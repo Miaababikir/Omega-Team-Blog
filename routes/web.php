@@ -20,4 +20,6 @@ Route::get('posts/{post}', 'PostController@show')->name('posts.show');
 
 // Replies
 Route::post('posts/{post}/replies', 'ReplyController@store')->middleware('auth')->name('replies.store');
+Route::put('replies/{reply}', 'ReplyController@update')->middleware('auth')->name('replies.update');
+Route::delete('replies/{reply}', 'ReplyController@delete')->middleware('auth')->name('replies.delete');
 

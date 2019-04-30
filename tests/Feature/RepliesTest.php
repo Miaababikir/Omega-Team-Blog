@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Post;
 use App\Reply;
+use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -49,6 +50,61 @@ class RepliesTest extends TestCase
         ])
             ->assertRedirect("/login");
 
+    }
+
+    /** @test */
+    public function auth_user_can_update_his_reply()
+    {
+        $reply = factory(Reply::class)->create();
+
+        $this->loginUser($reply->user);
+
+        $this->put("/replies/{$reply->id}", [
+            'body' => "updated reply body"
+        ])
+            ->assertStatus(Response::HTTP_ACCEPTED);
+
+    }
+
+    /** @test */
+    public function Un_auth_user_can_not_update_reply()
+    {
+        $this->withExceptionHandling();
+
+        $this->loginUser();
+
+        $reply = factory(Reply::class)->create();
+
+        $this->put("/replies/{$reply->id}", [
+            'body' => "updated reply body"
+        ])
+            ->assertStatus(Response::HTTP_FORBIDDEN);
+    }
+
+    /** @test */
+    public function auth_user_can_delete_his_reply()
+    {
+        $reply = factory(Reply::class)->create();
+
+        $this->loginUser($reply->user);
+
+        $this->delete("/replies/{$reply->id}", [
+            'body' => "updated reply body"
+        ])
+            ->assertStatus(Response::HTTP_ACCEPTED);
+    }
+
+    /** @test */
+    public function un_auth_user_can_not_delete_a_reply()
+    {
+        $this->withExceptionHandling();
+
+        $reply = factory(Reply::class)->create();
+
+        $this->loginUser();
+
+        $this->delete("/replies/{$reply->id}")
+            ->assertStatus(Response::HTTP_FORBIDDEN);
     }
 
 }

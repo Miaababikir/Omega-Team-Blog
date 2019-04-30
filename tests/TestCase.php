@@ -33,9 +33,9 @@ abstract class TestCase extends BaseTestCase
 
     }
 
-    protected function loginUser()
+    protected function loginUser($user = null)
     {
-        $user = factory(User::class)->create();
+        $user ?: $user = factory(User::class)->create();
 
         $this->actingAs($user);
     }
