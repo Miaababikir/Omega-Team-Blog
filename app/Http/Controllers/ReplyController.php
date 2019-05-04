@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateReplyRequest;
+use App\Http\Requests\UpdateReplyRequest;
 use App\Post;
 use App\Reply;
 use Illuminate\Http\Request;
@@ -9,16 +11,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ReplyController extends Controller
 {
-    public function store(Post $post, Request $request)
+    public function store(Post $post, CreateReplyRequest $request)
     {
-        $this->validate($request, [ 'body' => 'required' ]);
-
-        $post->replies()->create([
-            'body' => $request->body,
-            'user_id' => auth()->user()->id
-        ]);
-
-        return redirect()->route('posts.show', $post->slug);
+        return $request->save($post);
     }
 
     /**
@@ -27,15 +22,12 @@ class ReplyController extends Controller
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function update(Reply $reply, Request $request)
+    public function update(Reply $reply, UpdateReplyRequest $request)
     {
+        // TODO Find way to refactor this
         $this->authorize('update', $reply);
 
-        $reply->update([
-            'body' => $request->body
-        ]);
-
-        return response('updated', Response::HTTP_ACCEPTED);
+        return $request->save($reply);
     }
 
     /**
