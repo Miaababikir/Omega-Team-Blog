@@ -57,7 +57,7 @@ class RepliesTest extends TestCase
     {
         $reply = factory(Reply::class)->create();
 
-        $this->loginUser($reply->user);
+        $this->loginUser($reply->owner);
 
         $this->put("/replies/{$reply->id}", [
             'body' => "updated reply body"
@@ -86,7 +86,7 @@ class RepliesTest extends TestCase
     {
         $reply = factory(Reply::class)->create();
 
-        $this->loginUser($reply->user);
+        $this->loginUser($reply->owner);
 
         $this->delete("/replies/{$reply->id}", [
             'body' => "updated reply body"

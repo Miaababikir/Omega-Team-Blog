@@ -9,14 +9,16 @@ class Reply extends Model
 {
     protected $guarded = [];
 
+    protected $with = ['owner'];
+
     public function post()
     {
         return $this->belongsTo(Post::class);
     }
 
-    public function user()
+    public function owner()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function getCreatedAtAttribute($value)

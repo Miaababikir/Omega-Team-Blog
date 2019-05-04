@@ -26,7 +26,7 @@
                     </p>
                 @endif
 
-                <button class="bg-green py-3 px3 rounded text-white w-4/5 hover:bg-green-light mb-6" type="submit">
+                <button class="bg-green py-3 px-3 rounded text-white w-4/5 hover:bg-green-light mb-6" type="submit">
                     Login
                 </button>
 

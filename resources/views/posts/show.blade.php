@@ -58,23 +58,7 @@
             </div>
         @endauth
 
-        @foreach($post->replies as $reply)
-
-            <div class="flex mx-auto px-10 mb-6">
-                <div class="flex justify-center px-4"><img class="w-16 h-16 rounded-full mr-4"
-                                                           src="{{ asset($reply->user->image) }}" alt="avatar"></div>
-                <div class="flex-1 bg-white py-6 px-10 shadow">
-                    <div class="flex justify-between items-center mb-2">
-                        <span class="text-xl font-semibold">{{ $reply->user->name }}</span>
-                        <span class="text-sm text-grey">{{ $reply->created_at }}</span>
-                    </div>
-                    <p class="text-lg">
-                        {{ $reply->body }}
-                    </p>
-                </div>
-            </div>
-
-        @endforeach
+        <replies :data="{{ $post->replies }}"></replies>
 
     </div>
 
